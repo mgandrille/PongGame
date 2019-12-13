@@ -2,7 +2,7 @@
 
 # Simple Pong
 # By @TokyoEdTech
-# Part 4 : Moving the ball
+# Part 5 : Collision with the paddles
 
 #import os
 import turtle
@@ -79,11 +79,11 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border checking
-    if ball.ycor() > 290:   # top of the screen
-        ball.sety(290)  
+    if ball.ycor() > 290:    # top of the screen
+        ball.sety(290)
         ball.dy *= -1
 
-    if ball.ycor() < -290:   # bottom of the screen
+    if ball.ycor() < -290:    # bottom of the screen
         ball.sety(-290)
         ball.dy *= -1
 
@@ -94,6 +94,14 @@ while True:
     if ball.xcor() < -390:  # left side of the screen
         ball.goto(0,0)
         ball.dx *= -1
-   
+
+    # Paddle and ball collisions
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() -40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() -40):
+        ball.setx(-340)
+        ball.dx *= -1
 
 #os.system("pause")
