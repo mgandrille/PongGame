@@ -2,7 +2,7 @@
 
 # Simple Pong
 # By @TokyoEdTech
-# Part 1 : Getting Started
+# Part 2 : Game Objects
 
 import os
 import turtle
@@ -39,8 +39,6 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.4			# speed
-ball.dy = -0.4			# speed
 
 # Main game loop
 while True:
