@@ -2,9 +2,9 @@
 
 # Simple Pong
 # By @TokyoEdTech
-# Part 3 : Moving the Paddles
+# Part 4 : Moving the ball
 
-import os
+#import os
 import turtle
 
 wn = turtle.Screen()
@@ -39,7 +39,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-
+ball.dx = 0.1			# speed
+ball.dy = -0.1			# speed
 
 # Function
 def paddle_a_up():
@@ -67,11 +68,32 @@ wn.listen()
 wn.onkeypress(paddle_a_up, "a")
 wn.onkeypress(paddle_a_down, "q")
 wn.onkeypress(paddle_b_up, "p")
-wn.onkeypress(paddle_b_down, "m ")
+wn.onkeypress(paddle_b_down, "m")
 
 # Main game loop
 while True:
     wn.update()
 
-     
-os.system("pause")
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # Border checking
+    if ball.ycor() > 290:   # top of the screen
+        ball.sety(290)  
+        ball.dy *= -1
+
+    if ball.ycor() < -290:   # bottom of the screen
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390:  # right side of the screen
+        ball.goto(0,0)
+        ball.dx *= -1
+
+    if ball.xcor() < -390:  # left side of the screen
+        ball.goto(0,0)
+        ball.dx *= -1
+   
+
+#os.system("pause")
